@@ -37,7 +37,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 我们定义一个自己的component（组件）
 
-```Vue
+```html
 <template id="cool-component">
     <p> Here is all my cool stuff</p>
 </template>
@@ -51,7 +51,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 当我们在代码中引用cool-component标签时：
 
-```Html
+```html
 <div>
 	<cool-component/>
 </div>
@@ -59,7 +59,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 对应翻译到网页上的代码是：
 
-```Html
+```html
 <div>
 	<p> Here is all my cool stuff</p>
 </div>
@@ -71,7 +71,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 我们对cool-component做一点点调整，这里我们会用到slot标签。
 
-```VUE
+```html
 <template id="cool-component">
 	<slot></slot>
 </template>
@@ -87,7 +87,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 在cool-component中添加一个按钮：
 
-```Vue
+```html
 <div>
     <cool-component>
         <button>Super cool button</button>
@@ -99,7 +99,7 @@ These are the new definitions. For all other definitions, consult current [spec]
 
 在cool-component中加一段文字：
 
-```Vue
+```html
 <div>
     <cool-component>
         <p>You are awesome!</p>

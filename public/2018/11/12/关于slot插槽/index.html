@@ -91,43 +91,43 @@
 <p>初学HTML的朋友可能不太常见到slot标签，大多数看到的是div, h1,  img等最常用的标签，但事实上在使用div标签的时候，就已经运用了类似slot功能。因为一个div标签在定义的时候就在内部增加了slot插槽，这使得我们可以在div内部放其它的标签。</p>
 <p>举例：</p>
 <p>我们定义一个自己的component（组件）</p>
-<pre class="line-numbers language-Vue"><code class="language-Vue"><template id="cool-component">
-    <p> Here is all my cool stuff</p>
-</template>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cool-component<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span> Here is all my cool stuff<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>上面我们使用template标签定义了一个最简单的component，名字叫cool-component。</p>
 <p>这个component只有一个功能，就是展示我们想要展示的话。初学web编程的朋友可能会问：我们为什么要如此复杂的为了一句话来写这么长的代码？这样的疑问提出的完全正确！因为为了一句话写一个component就是画蛇添足。不过这里只是举例子，因为component使用的场景，应该是更复杂的地方。比如在为大的企业开发网站时，由于多个页面会展示相同的企业信息或别的可以复用的内容，如果每次去写，就太麻烦了。这时候我们会定义一个component，来提高开发效率。所以用component的场景是component内容需要多次被复用，并且可以封装的情况下，我们去定义它。团队协作中，使用component也可以大大提升开发的效率。</p>
 <p>当我们在代码中引用cool-component标签时：</p>
-<pre class="line-numbers language-Html"><code class="language-Html"><div>
-    <cool-component>
-</cool-component></div>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cool-component</span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>对应翻译到网页上的代码是：</p>
-<pre class="line-numbers language-Html"><code class="language-Html"><div>
-    <p> Here is all my cool stuff</p>
-</div>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span> Here is all my cool stuff<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>但是只显示cool-component标签内已经定义好的static文字，似乎有点单调。该怎么修改呢？</p>
 <p>我们对cool-component做一点点调整，这里我们会用到slot标签。</p>
-<pre class="line-numbers language-VUE"><code class="language-VUE"><template id="cool-component">
-    <slot></slot>
-</template>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cool-component<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可以看到我们将原有的p标签替换成了slot标签。那么有什么用呢？</p>
 <p>我们来看看现在如何使用新构造的cool-component:</p>
 <p>在cool-component中添加一个按钮：</p>
-<pre class="line-numbers language-Vue"><code class="language-Vue"><div>
-    <cool-component>
-        <button>Super cool button</button>
-    </cool-component>
-</div>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cool-component</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Super cool button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cool-component</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在cool-component中加一段文字：</p>
-<pre class="line-numbers language-Vue"><code class="language-Vue"><div>
-    <cool-component>
-        <p>You are awesome!</p>
-    </cool-component>
-</div>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cool-component</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>You are awesome!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cool-component</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>你还可以在cool-component中增加各种你想要的内容。</p>
 <p>所以，slot为自定义component提供了功能的拓展，使得component的使用可以更加变化多端，功能强大。</p>
