@@ -78,6 +78,8 @@ prism_plugin:
   auto_detect: true
   tab_replace: true
 
+sitemap:
+    path: sitemap.xml
 
 ## Themes: https://hexo.io/themes/
 theme: gradient

@@ -2,7 +2,7 @@
 menu:
   Home: /
   Archives: /archives
-  '#Random': /categories/Category-1/random/
+  Messages: /messages
   Contact: /contact/
 
 footer_icons:
