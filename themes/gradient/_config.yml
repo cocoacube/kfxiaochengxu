@@ -3,7 +3,7 @@ menu:
   Home: /
   Archives: /archives
   Messages: /messages
-  Contact: /contact/
+  About: /about
 
 footer_icons:
   'Hexo.io':
