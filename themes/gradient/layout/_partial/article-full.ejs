@@ -1,0 +1,38 @@
+<div class="container blogPost">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2 class="blog-post-title">
+            <%- item.title || item.link%>
+            </h2>
+
+            <p class="meta"><i class="far fa-clock"></i>
+                <%= item.date.format(config.date_format) %> <%- partial('categories', {item: item}) %> <span style='margin-left: 50px'><%- readingTime(item.content)%></span>
+            </p>
+
+            <p class="meta">
+                
+            </p>
+
+            <!-- Content -->
+            <%- item.content %>
+            <br/>
+            <p class="meta">
+                <%- partial('tags', {item: item}) %>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <span style="margin-left:5px">Comments</span>
+            <div id="vcomments" style="margin-top:20px; background-color:white; padding:10px"></div>
+        </div>
+    </div>
+</div>
+<!-- Menu fade on scroll -->
+<script>
+    new Valine({
+            el: '#vcomments',
+            appId: 'gBEvOudmB7NHzRKHrbhEdUgD-gzGzoHsz',
+            appKey: 'xcU7sGhNHVWIPbw8pMpllqX5',
+            avatar:'mm', 
+            placeholder: 'ask anything!'
+        })
+</script>
