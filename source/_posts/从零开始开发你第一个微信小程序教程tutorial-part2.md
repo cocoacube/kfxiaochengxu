@@ -3,7 +3,7 @@ uuid: 24203300-eec8-11e8-9ab0-e176216747e5
 title: 从零开始开发你第一个微信小程序教程tutorial-part2
 date: 2018-11-23 10:33:20
 tags:
-featured_image: ./img/asuka05.png
+featured_image: /img/asuka05.png
 ---
 
 在上一篇中，我们已经创建了一个微信小程序工程，这一篇，我们将开始开发微信小程序Asuka。

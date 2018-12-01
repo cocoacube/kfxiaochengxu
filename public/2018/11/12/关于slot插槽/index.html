@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>关于slot插槽 - kfXiaochengxu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<meta name="description" content="一个学习开发小程序的网站。零基础入门、简单、多实例。">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-7264754231767067",
+	    enable_page_level_ads: true
+	  });
+	</script>
+<link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            关于slot插槽
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-11-11T17:55:16.000Z" itemprop="datePublished">Nov 12 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 minutes read (About 788 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h3="" id="关于Slot插槽"><a href="#关于Slot插槽" class="headerlink" title="关于Slot插槽"></a>关于Slot插槽<p>笔者过去做的前端开发主要是iOS app的开发，对于slot插槽是很陌生的。但使用中发现在vuejs开发时，slot插槽是一个非常有魔力的东西。</p>
+<p>w3c中是这样定义slot的：</p>
+<hr>
+<p>Definitions</p>
+<p>These are the new definitions. For all other definitions, consult current <a href="http://w3c.github.io/webcomponents/spec/shadow/" target="_blank" rel="noopener">spec</a>.</p>
+<ul>
+<li><strong>slot</strong> – a defined location in a shadow tree. Represented by the <code>slot</code> element.</li>
+<li><strong>slot name</strong> – the name of a <strong>slot</strong>.</li>
+<li><strong>default slot</strong> – a <strong>slot</strong> for assigning nodes without a <strong>slot name</strong>.</li>
+</ul>
+<hr>
+<p>意思是说，slot在语法树中定义了一个影位，这个影位用slot标签展示。</p>
+<p>初学HTML的朋友可能不太常见到slot标签，大多数看到的是div, h1,  img等最常用的标签，但事实上在使用div标签的时候，就已经运用了类似slot功能。因为一个div标签在定义的时候就在内部增加了slot插槽，这使得我们可以在div内部放其它的标签。</p>
+<p>举例：</p>
+<p>我们定义一个自己的component（组件）</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cool-component"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> Here is all my cool stuff<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面我们使用template标签定义了一个最简单的component，名字叫cool-component。</p>
+<p>这个component只有一个功能，就是展示我们想要展示的话。初学web编程的朋友可能会问：我们为什么要如此复杂的为了一句话来写这么长的代码？这样的疑问提出的完全正确！因为为了一句话写一个component就是画蛇添足。不过这里只是举例子，因为component使用的场景，应该是更复杂的地方。比如在为大的企业开发网站时，由于多个页面会展示相同的企业信息或别的可以复用的内容，如果每次去写，就太麻烦了。这时候我们会定义一个component，来提高开发效率。所以用component的场景是component内容需要多次被复用，并且可以封装的情况下，我们去定义它。团队协作中，使用component也可以大大提升开发的效率。</p>
+<p>当我们在代码中引用cool-component标签时：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">true<span class="hljs-tag">&lt;<span class="hljs-name">cool-component</span>/&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对应翻译到网页上的代码是：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">true<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> Here is all my cool stuff<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是只显示cool-component标签内已经定义好的static文字，似乎有点单调。该怎么修改呢？</p>
+<p>我们对cool-component做一点点调整，这里我们会用到slot标签。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cool-component"</span>&gt;</span></span><br><span class="line">true<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到我们将原有的p标签替换成了slot标签。那么有什么用呢？</p>
+<p>我们来看看现在如何使用新构造的cool-component:</p>
+<p>在cool-component中添加一个按钮：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">cool-component</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Super cool button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">cool-component</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在cool-component中加一段文字：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">cool-component</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You are awesome!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">cool-component</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>你还可以在cool-component中增加各种你想要的内容。</p>
+<p>所以，slot为自定义component提供了功能的拓展，使得component的使用可以更加变化多端，功能强大。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/11/15/从零开始开发你第一个微信小程序教程tutorial-part1/">从零开始开发你第一个微信小程序教程tutorial-part1</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/11/12/开发小程序准备工作/">开发小程序准备工作</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Cube&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("中文/英文/html/javascript/微信小程序");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

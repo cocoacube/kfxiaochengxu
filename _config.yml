@@ -38,7 +38,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight: 
-  enable: false
+  enable: true
   line_number: true
   auto_detect: true
   tab_replace: true
@@ -78,11 +78,16 @@ prism_plugin:
   auto_detect: true
   tab_replace: true
 
+lightgallery:
+    js: 'https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js'
+    css: 'https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css'
+    plugins: {}
+
 sitemap:
     path: sitemap.xml
 
 ## Themes: https://hexo.io/themes/
-theme: gradient
+theme: minos
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
