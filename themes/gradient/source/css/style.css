@@ -5,10 +5,10 @@
     src: url("../font/Typodermic - GoodTimesRg-Regular.ttf") format("truetype"), url("../font/Typodermic - GoodTimesRg-Regular.otf")  format("opentype");
 }
 
-@font-face {
+/* @font-face {
     font-family: Primal;
     src: url("../font/PrimalWebfont.woff") format("woff"), url("../font/Primal.otf")  format("opentype");
-}
+} */
 
 body{
      font-family: 'Lato', sans-serif;
