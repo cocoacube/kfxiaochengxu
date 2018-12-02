@@ -87,7 +87,7 @@ sitemap:
     path: sitemap.xml
 
 ## Themes: https://hexo.io/themes/
-theme: gradient
+theme: minos
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
