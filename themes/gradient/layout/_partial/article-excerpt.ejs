@@ -3,7 +3,8 @@
 
   <div class="item-<%=index%>">
     <a href="<%- config.root %><%- item.path %>" class="post">
-      <div class="thumb" style="background-image: url(<%- config.root %><%- item.featured_image || theme.featured_image %>);"></div>
+      <!-- <div class="thumb" style="background-image: url(<%- config.root %><%- item.featured_image || theme.featured_image %>);"></div> -->
+      <div class="thumb" style="background-image: url(<%- item.featured_image || theme.featured_image %>);"></div>
       <article>
         <h1><%=item.title %></h1>
         <% if(index != 1){ %>

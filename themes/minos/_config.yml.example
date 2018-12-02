@@ -40,9 +40,9 @@ share:
 
 # Comment plugin settings.
 comment:
-  type: 'valine'
-  app_id: 'gBEvOudmB7NHzRKHrbhEdUgD-gzGzoHsz'        # (required) LeanCloud application id
-  app_key: 'xcU7sGhNHVWIPbw8pMpllqX5'       # (required) LeanCloud application key
+  type: valine
+  app_id: gBEvOudmB7NHzRKHrbhEdUgD-gzGzoHsz        # (required) LeanCloud application id
+  app_key: xcU7sGhNHVWIPbw8pMpllqX5       # (required) LeanCloud application key
   notify: true           # (optional) receive email notification
   verify: false           # (optional) show verification code
   placeholder: let's talk   # (optional) comment box placeholder text
