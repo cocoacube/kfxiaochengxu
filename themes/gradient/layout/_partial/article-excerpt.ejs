@@ -3,7 +3,12 @@
 
   <div class="item-<%=index%>">
     <a href="<%- config.root %><%- item.path %>" class="post">
+<<<<<<< HEAD
       <div class="thumb" style="background-image: url(<%- config.root %><%- item.featured_image || theme.featured_image %>);"></div>
+=======
+      <!-- <div class="thumb" style="background-image: url(<%- config.root %><%- item.featured_image || theme.featured_image %>);"></div> -->
+      <div class="thumb" style="background-image: url(<%- item.featured_image || theme.featured_image %>);"></div>
+>>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1
       <article>
         <h1><%=item.title %></h1>
         <% if(index != 1){ %>

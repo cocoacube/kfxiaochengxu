@@ -3,7 +3,11 @@ uuid: 6a819c10-e88a-11e8-b8dd-7f4713d006c9
 title: 从零开始开发你第一个微信小程序教程tutorial-part1
 date: 2018-11-15 11:56:22
 tags:
+<<<<<<< HEAD
 featured_image: ./img/startpage.png
+=======
+featured_image: /img/startpage.png
+>>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1
 ---
 
 如果编程只是局限于做一些按钮小组件，那么也太过单调和无聊了。在我刚开始学习编程的时候，最重要的驱动力是想写出自己的iOS App。拥有自己的App感觉是一件非常酷的事情。今天我们就以此为切入点，来逐步完成一个微信小程序。

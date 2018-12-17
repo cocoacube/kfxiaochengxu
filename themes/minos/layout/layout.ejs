@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <%- partial('common/head') %>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-7264754231767067",
+	    enable_page_level_ads: true
+	  });
+	</script>
+</head>
+<body>
+    <%- partial('common/navbar', { page }) %>
+    <%- body %>
+    <%- partial('common/footer') %>
+    <%- partial('common/scripts') %>
+
+    <% if (has_config('search.type')) { %>
+    <%- partial('search/' + get_config('search.type')) %>
+    <% } %>
+</body>
+</html>

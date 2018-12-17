@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 node_modules/node_modules/
+=======
+node_modules/
+themes/.DS_Store
+package-lock.json
+themes/minos/.DS_Store
+themes/minos/source/.DS_Store
+themes/minos/source/images/.DS_Store
+package-lock.json
+themes/.DS_Store
+>>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1

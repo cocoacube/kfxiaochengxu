@@ -5,10 +5,17 @@
     src: url("../font/Typodermic - GoodTimesRg-Regular.ttf") format("truetype"), url("../font/Typodermic - GoodTimesRg-Regular.otf")  format("opentype");
 }
 
+<<<<<<< HEAD
 @font-face {
     font-family: Primal;
     src: url("../font/PrimalWebfont.woff") format("woff"), url("../font/Primal.otf")  format("opentype");
 }
+=======
+/* @font-face {
+    font-family: Primal;
+    src: url("../font/PrimalWebfont.woff") format("woff"), url("../font/Primal.otf")  format("opentype");
+} */
+>>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1
 
 body{
      font-family: 'Lato', sans-serif;
@@ -239,6 +246,16 @@ blockquote > * {
 
 img {
   
+<<<<<<< HEAD
   max-width: 100%;
+=======
+  /* max-width: 100%; */
+  max-height: 800px;
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+>>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1
 }
 
