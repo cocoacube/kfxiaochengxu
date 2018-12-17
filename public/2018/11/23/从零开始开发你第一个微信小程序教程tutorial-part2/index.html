@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>从零开始开发你第一个微信小程序教程tutorial-part2 - kfXiaochengxu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<meta name="description" content="一个学习开发小程序的网站。零基础入门、简单、多实例。">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-7264754231767067",
+	    enable_page_level_ads: true
+	  });
+	</script>
+<link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            从零开始开发你第一个微信小程序教程tutorial-part2
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-11-23T02:33:20.000Z" itemprop="datePublished">Nov 23 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            14 minutes read (About 2040 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">在上一篇中，我们已经创建了一个微信小程序工程，这一篇，我们将开始开发微信小程序Asuka。<p></p>
+<p>在创建工程的时候，我选择了使用TypeScript语法的工程。TypeScript相对于JavaScript来说，多了类型描述，并且TypeScript完全支持JavaScript语法，所以不必担心。</p>
+<p>首先，大家可以在Utils目录下，找到app.json文件，并且打开它。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-string">"pages"</span>:[</span><br><span class="line">    <span class="hljs-string">"pages/index/index"</span>,</span><br><span class="line">    <span class="hljs-string">"pages/logs/logs"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="hljs-string">"window"</span>:&#123;</span><br><span class="line">    <span class="hljs-string">"backgroundTextStyle"</span>:<span class="hljs-string">"light"</span>,</span><br><span class="line">    <span class="hljs-string">"navigationBarBackgroundColor"</span>: <span class="hljs-string">"#fff"</span>,</span><br><span class="line">    <span class="hljs-string">"navigationBarTitleText"</span>: <span class="hljs-string">"WeChat"</span>,</span><br><span class="line">    <span class="hljs-string">"navigationBarTextStyle"</span>:<span class="hljs-string">"black"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>app.json文件是整个小程序的配置文件，这里有小程序一些基本设置。其中pages项描述了小程序内包含的页面，之类我们看到包含了两个页面，一个是index，一个是logs，这两个页面我们可以在pages目录中找到。由于index页面放在了第一位，所以这个就是小程序打开时所展示的页面。</p>
+<p>然后我们进入index.wxml页面，打开后可以看到如下代码。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"userinfo"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">"&#123;&#123;!hasUserInfo &amp;&amp; canIUse&#125;&#125;"</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">"getUserInfo"</span> <span class="hljs-attr">bindgetuserinfo</span>=<span class="hljs-string">"getUserInfo"</span>&gt;</span> 获取头像昵称 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">wx:else</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">"bindViewTap"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"userinfo-avatar"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&#123;&#123;userInfo.avatarUrl&#125;&#125;"</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"cover"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"userinfo-nickname"</span>&gt;</span>&#123;&#123;userInfo.nickName&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"usermotto"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user-motto"</span>&gt;</span>&#123;&#123;motto&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是微信小程序创建的模版代码，现在我们就来修改它，来构建我们Asuka小程序的UI布局。</p>
+<p>我们将代码的2-12行全部删除。结果如下：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href="/img/asukaui1.png" title="asukaui1" class="gallery-item"><img src="/img/asukaui1.png" alt="asukaui1"></a></p>
+<p>根据我们的UI，Asuka可以分成两个部分，上部的留言列表，下部的内容编辑区域和发送按钮。</p>
+<p>由于现在我们还没有数据库，所以我们先做一些mock data（mock data是用来快速实现功能而创建的假数据）。</p>
+<p>现在打开index.ts文件（如果在创建时没有选择TypeScript工程，那可以打开index.js文件），内容如下：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//index.js</span></span><br><span class="line"><span class="hljs-comment">//获取应用实例</span></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; IMyApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../../app'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> app = getApp&lt;IMyApp&gt;()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    motto: <span class="hljs-string">'点击 “编译” 以构建'</span>,</span><br><span class="line">    userInfo: &#123;&#125;,</span><br><span class="line">    hasUserInfo: <span class="hljs-literal">false</span>,</span><br><span class="line">    canIUse: wx.canIUse(<span class="hljs-string">'button.open-type.getUserInfo'</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">//事件处理函数</span></span><br><span class="line">  bindViewTap() &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: <span class="hljs-string">'../logs/logs'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (app.globalData.userInfo) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">        userInfo: app.globalData.userInfo,</span><br><span class="line">        hasUserInfo: <span class="hljs-literal">true</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data.canIUse)&#123;</span><br><span class="line">      <span class="hljs-comment">// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回</span></span><br><span class="line">      <span class="hljs-comment">// 所以此处加入 callback 以防止这种情况</span></span><br><span class="line">      app.userInfoReadyCallback = <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">          userInfo: res,</span><br><span class="line">          hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-comment">// 在没有 open-type=getUserInfo 版本的兼容处理</span></span><br><span class="line">      wx.getUserInfo(&#123;</span><br><span class="line">        success: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;</span><br><span class="line">          app.globalData.userInfo = res.userInfo</span><br><span class="line">          <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">            userInfo: res.userInfo,</span><br><span class="line">            hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getUserInfo(e: any) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(e)</span><br><span class="line">    app.globalData.userInfo = e.detail.userInfo</span><br><span class="line">    <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">      userInfo: e.detail.userInfo,</span><br><span class="line">      hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>代码第8行我们可以看到一个data变量。这个变量用来制定index文件内可以调用的数据。我们先把data内的无用内容删除掉，然后我们对它进行一个修改，添加一些mock data，命名为mockMessages。结果如下：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//index.js</span></span><br><span class="line"><span class="hljs-comment">//获取应用实例</span></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; IMyApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../../app'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> app = getApp&lt;IMyApp&gt;()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">truemockMessages: [<span class="hljs-string">'Hello Asuka!'</span>, <span class="hljs-string">'I am asuka user1'</span>, <span class="hljs-string">'Who is it there?'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">//事件处理函数</span></span><br><span class="line">  bindViewTap() &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: <span class="hljs-string">'../logs/logs'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (app.globalData.userInfo) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">        userInfo: app.globalData.userInfo,</span><br><span class="line">        hasUserInfo: <span class="hljs-literal">true</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data.canIUse)&#123;</span><br><span class="line">      <span class="hljs-comment">// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回</span></span><br><span class="line">      <span class="hljs-comment">// 所以此处加入 callback 以防止这种情况</span></span><br><span class="line">      app.userInfoReadyCallback = <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">          userInfo: res,</span><br><span class="line">          hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-comment">// 在没有 open-type=getUserInfo 版本的兼容处理</span></span><br><span class="line">      wx.getUserInfo(&#123;</span><br><span class="line">        success: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;</span><br><span class="line">          app.globalData.userInfo = res.userInfo</span><br><span class="line">          <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">            userInfo: res.userInfo,</span><br><span class="line">            hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getUserInfo(e: any) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(e)</span><br><span class="line">    app.globalData.userInfo = e.detail.userInfo</span><br><span class="line">    <span class="hljs-keyword">this</span>.setData!(&#123;</span><br><span class="line">      userInfo: e.detail.userInfo,</span><br><span class="line">      hasUserInfo: <span class="hljs-literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>mockMessage是一个字符串的数组，里面有三条信息。</p>
+<p>此时我们已经有了数据，那么下一步就是要添加到我们的index页面中。</p>
+<p>通过阅读微信小程序的开发文档，在组建选项卡下，我找到了一个组件叫 <a href="https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html" target="_blank" rel="noopener">scroll-view</a> 。从字面意思我们就可以猜到这个是一个可以滚动的视图。可以滚动的意思是说，当我们的内容太多的时候，屏幕无法一次全部展示，这个组件可以让其滚动起来展示更多的内容。小程序的布局文件都是以wxml结尾的，我们打开index.wxml文件，刚才我们已经将内部无用的部分删除，所以我们在内部添加一个scroll-view。结果如下：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line"> 	<span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在scroll-view中间，我们需要展示我们的mockMessages。</p>
+<p>先来看一下结果代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line"> 	<span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;mockMessages&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"item"</span>&gt;</span></span><br><span class="line">    &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们这里用到了scroll-view，view两个组件。并且用到了小程序的列表渲染语法wx:for。我们在view中使用了wx:for的意义是，这个for循环会循环创建view。而循环的数组就是我们的mockMessages。接下来，如果你和我一样使用的是TypeScript工程，在微信开发者工具上点击Compile按钮。你可能会遇到tsc not found的错误输出。不要担心，在terminal中使用：</p>
+<figure class="highlight cmake hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="hljs-keyword">install</span> typescript -g</span><br></pre></td></tr></table></figure>
+<p>全局安装typescript的编译器。如果你又遇到了npm not found，那你应该去安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs</a>了。安装好后再执行上一条命令安装typescript。</p>
+<p>此时我们会得到这样一个结果：</p>
+<p><a href="/img//asuka01.png" title="asuka01" class="gallery-item"><img src="/img//asuka01.png" alt="asuka01"></a></p>
+<h2 id="ugly"><a href="#ugly" class="headerlink" title="ugly!!!"></a>ugly!!!</h2><p>丑爆了！不要担心，我们来美化一下它。</p>
+<p><a href="/img//asuka02.png" title="asuka02" class="gallery-item"><img src="/img//asuka02.png" alt="asuka02"></a></p>
+<h2 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h2><p>现在看起来就好了很多了。主要的原因是我们为每一条信息都加了一些美化渲染。这里我们加了居中布局，和阴影效果，那么我们去学怎么实现它。打开index.wxss文件，删掉里面的内容，然后将内容改为如下所示：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**index.wxss**/</span></span><br><span class="line"><span class="hljs-selector-class">.message</span>&#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex;</span><br><span class="line">  <span class="hljs-attribute">justify-content</span>: center;</span><br><span class="line">  <span class="hljs-attribute">align-items</span>: center;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;</span><br><span class="line">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> grey;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们创建了一个message类，前面的的句点”.”是css里定义类的语法。里面加了margin布局，display使用了flex，然后布局选择了居中，最小高度是60px，以及box-shadow加了3px偏量和grey色。</p>
+<p>回到index.wxml文件，修改为如下：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;mockMessages&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"item"</span>&gt;</span></span><br><span class="line">    &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里我们注意到，我们在view内加入了class=”message”，并且把最外层的view里的class=”container”删除掉了。修改后变可以得到我们的效果样式。</p>
+<p>下一步就是增加一个输入框了。</p>
+<p>在index.wxml中新增一个input组件：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;mockMessages&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"item"</span>&gt;</span></span><br><span class="line">    &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input'</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">'type...'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到我们还为input选择了input类，所以我们在index.wxss中新增input类：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**index.wxss**/</span></span><br><span class="line"><span class="hljs-selector-class">.message</span>&#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex;</span><br><span class="line">  <span class="hljs-attribute">justify-content</span>: center;</span><br><span class="line">  <span class="hljs-attribute">align-items</span>: center;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;</span><br><span class="line">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> grey;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.input</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><a href="/img/asuka03.png" title="asuka03" class="gallery-item"><img src="/img/asuka03.png" alt="asuka03"></a></p>
+<p>结果还不错，但是还不够，因为我们希望这个type输入框是在底部的。所以我们还要调整一下.input类的设置。修改代码如下：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**index.wxss**/</span></span><br><span class="line"><span class="hljs-selector-class">.message</span>&#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex;</span><br><span class="line">  <span class="hljs-attribute">justify-content</span>: center;</span><br><span class="line">  <span class="hljs-attribute">align-items</span>: center;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;</span><br><span class="line">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> grey;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.input</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: fixed;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><a href="/img/asuka04.png" title="asuka04" class="gallery-item"><img src="/img/asuka04.png" alt="asuka04"></a></p>
+<p>此时我们还需要一个按钮了。该怎么添加呢？</p>
+<p>首先请看index.wxml的代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--index.wxml--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;mockMessages&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"item"</span>&gt;</span></span><br><span class="line">    &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'footer'</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input'</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">'type...'</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'send-button'</span> <span class="hljs-attr">size</span>=<span class="hljs-string">'mini'</span>&gt;</span>SEND<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们不仅添加了一个button组件，我们还在input以及button组件的外围添加了一层view组件，对input和button进行了包裹。并且创建了一个footer class来定义view的样式。button也有自己的send-button class来定义自己的样式。我们再去到index.wxss：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**index.wxss**/</span></span><br><span class="line"><span class="hljs-selector-class">.message</span>&#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex;</span><br><span class="line">  <span class="hljs-attribute">justify-content</span>: center;</span><br><span class="line">  <span class="hljs-attribute">align-items</span>: center;</span><br><span class="line">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;</span><br><span class="line">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> grey;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.footer</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: fixed;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: yellow;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex;</span><br><span class="line">  <span class="hljs-attribute">justify-content</span>: center;</span><br><span class="line">  <span class="hljs-attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.send-button</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.input</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">60%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终我们可以看到如下结果：</p>
+<p><a href="/img/asuka05.png" title="asuka05" class="gallery-item"><img src="/img/asuka05.png" alt="asuka05"></a></p>
+<p>这样，Asuka的UI布局，整体就完成了！看着还不错，学到了吗？有问题可以留言。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/12/04/从零开始开发小程序tutorial-part3-后台/">从零开始开发小程序tutorial part3-后台</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/11/15/从零开始开发你第一个微信小程序教程tutorial-part1/">从零开始开发你第一个微信小程序教程tutorial-part1</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Cube&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("中文/英文/html/javascript/微信小程序");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

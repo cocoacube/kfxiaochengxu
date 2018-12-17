@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>从零开始开发你第一个微信小程序教程tutorial-part1 - kfXiaochengxu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<meta name="description" content="一个学习开发小程序的网站。零基础入门、简单、多实例。">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-7264754231767067",
+	    enable_page_level_ads: true
+	  });
+	</script>
+<link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            从零开始开发你第一个微信小程序教程tutorial-part1
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-11-15T03:56:22.000Z" itemprop="datePublished">Nov 15 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 minutes read (About 686 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">如果编程只是局限于做一些按钮小组件，那么也太过单调和无聊了。在我刚开始学习编程的时候，最重要的驱动力是想写出自己的iOS App。拥有自己的App感觉是一件非常酷的事情。今天我们就以此为切入点，来逐步完成一个微信小程序。<p></p>
+<hr>
+<ul>
+<li>首先要想为自己的小程序取一个喜欢的名字。</li>
+<li>其次要想好这个小程序有什么功能。</li>
+<li>最后我们来实现它。</li>
+</ul>
+<p>我要做这样的一个小程序，它的名字叫Asuka。这个小程序的功能很简单，就是让用户可以畅所欲言。所以我需要在Asuka上面创建一个留言板，用户可以发布自己想要说的话。说干就干，我们先来做一个产品的原型设计。</p>
+<p>产品的原型设计工作有很多，专门为iOS使用的Sketch，在线的如同墨刀等等，不过我还是偏爱adobe旗下的XD。Adobe XD从公测起我就开始使用了，并且现在是全免费的。它上手非常简单方便，而且界面设计上非常极简，对于做Flat UI design来说，是绝对完美的原型设计工具。</p>
+<p><a href="https://www.adobe.com/hk_en/products/xd.html" target="_blank" rel="noopener">Adobe XD 下载</a></p>
+<h4 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h4><p>Asuka 原型设计第一版UI如图：</p>
+<p><a href="/img/asukaui1.png" title="asukaui1" class="gallery-item"><img src="/img/asukaui1.png" alt="asukaui1"></a></p>
+<p>这是一个最精简的产品原型。从零开始做产品，一定要从少向多不断的延伸。第一版的产品只有两个功能：</p>
+<ol>
+<li>用户可以查看其它用户的留言</li>
+<li>用户可以创建自己的留言</li>
+</ol>
+<p>因此，我们需要三个核心组件：</p>
+<ol>
+<li>用户留言列表</li>
+<li>用户创建留言输入框</li>
+<li>发送按钮</li>
+</ol>
+<h4 id="小程序开发工具"><a href="#小程序开发工具" class="headerlink" title="小程序开发工具"></a>小程序开发工具</h4><p>接下来我们打开小程序开发工具来创建一个小程序Project</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18111420" target="_blank" rel="noopener">小程序开发工具</a></p>
+<p>大家可以按照自己的系统下载对应的小程序开发工具。</p>
+<p>然后创建我们第一个小程序。</p>
+<p><a href="/img/startpage.png" title="startpage" class="gallery-item"><img src="/img/startpage.png" alt="startpage"></a></p>
+<p>选择紫色的Mini Program Project</p>
+<p><a href="/img/startpage1.png" title="startpage1" class="gallery-item"><img src="/img/startpage1.png" alt="startpage1"></a></p>
+<ol>
+<li>在Directory选择一个你需要存放Project的目录。</li>
+<li>在Name那里创建小程序的名字，我们用Asuka。</li>
+<li>在AppId下面的两行灰色字，第二行Or use a test account mini Program/Mini Game那里，点击Mini Program，会为小程序创建一个临时的AppId</li>
+<li>点击OK后，Asuka的启动项目就创建完成了。</li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/11/23/从零开始开发你第一个微信小程序教程tutorial-part2/">从零开始开发你第一个微信小程序教程tutorial-part2</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/11/12/关于slot插槽/">关于slot插槽</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Cube&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("中文/英文/html/javascript/微信小程序");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

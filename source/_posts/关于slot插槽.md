@@ -3,11 +3,7 @@ uuid: f216eca0-e5da-11e8-8bcd-fddcf839c3de
 title: 关于slot插槽
 date: 2018-11-12 01:55:16
 tags:
-<<<<<<< HEAD
-featured_image: ./img/slot.jpg
-=======
 featured_image: /img/slot.jpg
->>>>>>> c07f0cc8fbbebeb210328fdc9baf99530a701dd1
 
 ---
 

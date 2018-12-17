@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>微信小程序倒计时按钮 - kfXiaochengxu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<meta name="description" content="一个学习开发小程序的网站。零基础入门、简单、多实例。">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-7264754231767067",
+	    enable_page_level_ads: true
+	  });
+	</script>
+<link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            微信小程序倒计时按钮
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-11-01T15:58:22.000Z" itemprop="datePublished">Nov 1 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 minutes read (About 849 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">日常的小程序使用中，经常会有发送短信验证码的按钮，这个按钮有倒计时的属性，在倒计时期间，按钮是不可点击的状态。这种按钮非常实用，那么我们就来开发一个这样的按钮。<p></p>
+<h4 id="CountdownButton-基础代码"><a href="#CountdownButton-基础代码" class="headerlink" title="CountdownButton 基础代码"></a>CountdownButton 基础代码</h4><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'countdown-btn'</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">'sendCode'</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">'&#123;&#123;isCounting&#125;&#125;'</span>&gt;</span></span><br><span class="line">  		<span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">'&#123;&#123;isCounting&#125;&#125;'</span>&gt;</span>&#123;&#123;text&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span> </span><br><span class="line">  		<span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">'&#123;&#123;!isCounting&#125;&#125;'</span>&gt;</span>&#123;&#123;countdownText&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码有几个变量的绑定，bindtap绑定了一个sendCode方法，disabled绑定了isCounting变量。isCounting主要用来指示CountdownButton的状态。剩余两个变量text和countdownText分别用来展示按钮在不同状态时所显示的内容。</p>
+<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><p>第一步需要将上面的基础代码放入到 .wxml文件中想要显示的位置。</p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h4><p>第二步打开.js文件，在data域中声明上面需要绑定的几个变量：isCounting, text, countdownText。<br>除了这三个变量，我们还增加了一个countdownDuration的值，这个值用来设定倒计时时长，此处我们默认设置了10秒钟。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//index.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    ...</span><br><span class="line">    isCounting: <span class="hljs-literal">false</span>,</span><br><span class="line">    countdownText: <span class="hljs-string">'0s'</span>,</span><br><span class="line">    text: <span class="hljs-string">'获取验证码'</span>,</span><br><span class="line">    countdownDuration: <span class="hljs-number">10</span>,</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h4><p>第三步我们需要实现sendCode的逻辑代码。在sendCode方法中，首先我们使用了Date.now()获取了点击按钮那一时刻的时间，并且存在了start变量中（这里的时间是milliseconds）。我们希望这个倒计时按钮可以每一秒钟都更新倒计时状态，为了达成这个目标，我们使用了setInterval方法。setInterval方法需要传入一个function和一个每次重复的时间间隔（单位是milliseconds）。这里我们把重复的时间间隔设定为1000 milliseconds，也就是1秒。</p>
+<p>在传入的方法内部，我们首先要做的是获取当前时刻的时间，然后与start做差获得时间差（单位milliseconds），简单的数学运算后我们可以得到流逝的时间。Math.round方法主要用来将float数变成整数。在if逻辑判断中，当流逝的时间差小于我们初始设定的间隔时间（countdownDuration: 10）时，我们更新isCounting状态为true，并且对应的更新countdownText的值。直到时间差超过了10秒，我们将isCounting状态设置回false，表明按钮恢复到可点击状态。</p>
+<p>clearInterval方法是对setInterval进行终止的操作。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">//index.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">  	...</span><br><span class="line">    </span><br><span class="line">    isCounting: <span class="hljs-literal">false</span>,</span><br><span class="line">    countdownText: <span class="hljs-string">'0s'</span>,</span><br><span class="line">    text: <span class="hljs-string">'获取验证码'</span>,</span><br><span class="line">    countdownDuration: <span class="hljs-number">10</span>,</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  sendCode: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'code sent'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">var</span> start = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> globalThis = <span class="hljs-keyword">this</span>;</span><br><span class="line">    <span class="hljs-keyword">var</span> repeat = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">      <span class="hljs-keyword">var</span> now = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      <span class="hljs-keyword">var</span> seconds = <span class="hljs-built_in">Math</span>.round((now - start)/<span class="hljs-number">1000</span>);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(seconds);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (seconds &lt; globalThis.data.countdownDuration) &#123;</span><br><span class="line">        globalThis.setData(&#123;</span><br><span class="line">          isCounting: <span class="hljs-literal">true</span>,</span><br><span class="line">          countdownText: <span class="hljs-string">`<span class="hljs-subst">$&#123;globalThis.data.countdownDuration - seconds&#125;</span> s`</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;<span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        globalThis.setData(&#123;</span><br><span class="line">          isCounting: <span class="hljs-literal">false</span>,</span><br><span class="line">          countdownText: <span class="hljs-string">`10 s`</span></span><br><span class="line">        &#125;)</span><br><span class="line">        clearInterval(repeat);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>代码中的 let globalThis = this 需要理解。在setInterval中的function代码，其实已经创建了一个新的子域，this只能调用这个子域中的变量。因此我们需要在进入子域前，将最外层域的this存到globalThis中，如此操作才可以获取到data中对应的变量和方法。</p>
+<p>到此，一个倒计时按钮就做好了！</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="点击下载案例代码"><a href="#点击下载案例代码" class="headerlink" title="点击下载案例代码"></a><a href="https://www.haoqigood.com" target="_blank" rel="noopener">点击下载案例代码</a></h1><p><a href="https://www.haoqigood.com" target="_blank" rel="noopener">下载千鸟 | 你的AR创作空间！</a></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>c07f0cc8fbbebeb210328fdc9baf99530a701dd1</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/11/12/开发小程序准备工作/">开发小程序准备工作</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Cube&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("中文/英文/html/javascript/微信小程序");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>
