@@ -86,7 +86,7 @@
         <span class="column is-narrow">
             
             
-            6 minutes read (About 849 words)
+            6 minutes read (About 828 words)
         </span>
         
     </div>
@@ -104,23 +104,7 @@
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">//index.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">  	...</span><br><span class="line">    </span><br><span class="line">    isCounting: <span class="hljs-literal">false</span>,</span><br><span class="line">    countdownText: <span class="hljs-string">'0s'</span>,</span><br><span class="line">    text: <span class="hljs-string">'获取验证码'</span>,</span><br><span class="line">    countdownDuration: <span class="hljs-number">10</span>,</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  sendCode: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'code sent'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">var</span> start = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> globalThis = <span class="hljs-keyword">this</span>;</span><br><span class="line">    <span class="hljs-keyword">var</span> repeat = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">      <span class="hljs-keyword">var</span> now = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      <span class="hljs-keyword">var</span> seconds = <span class="hljs-built_in">Math</span>.round((now - start)/<span class="hljs-number">1000</span>);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(seconds);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (seconds &lt; globalThis.data.countdownDuration) &#123;</span><br><span class="line">        globalThis.setData(&#123;</span><br><span class="line">          isCounting: <span class="hljs-literal">true</span>,</span><br><span class="line">          countdownText: <span class="hljs-string">`<span class="hljs-subst">$&#123;globalThis.data.countdownDuration - seconds&#125;</span> s`</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;<span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        globalThis.setData(&#123;</span><br><span class="line">          isCounting: <span class="hljs-literal">false</span>,</span><br><span class="line">          countdownText: <span class="hljs-string">`10 s`</span></span><br><span class="line">        &#125;)</span><br><span class="line">        clearInterval(repeat);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>代码中的 let globalThis = this 需要理解。在setInterval中的function代码，其实已经创建了一个新的子域，this只能调用这个子域中的变量。因此我们需要在进入子域前，将最外层域的this存到globalThis中，如此操作才可以获取到data中对应的变量和方法。</p>
 <p>到此，一个倒计时按钮就做好了！</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h1 id="点击下载案例代码"><a href="#点击下载案例代码" class="headerlink" title="点击下载案例代码"></a><a href="https://www.haoqigood.com" target="_blank" rel="noopener">点击下载案例代码</a></h1><p><a href="https://www.haoqigood.com" target="_blank" rel="noopener">下载千鸟 | 你的AR创作空间！</a></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>c07f0cc8fbbebeb210328fdc9baf99530a701dd1</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p><a href="https://www.haoqigood.com" target="_blank" rel="noopener">下载千鸟 | 你的AR创作空间！</a></p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
